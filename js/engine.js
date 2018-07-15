@@ -93,7 +93,7 @@ var Engine = (function(global) {
        allEnemies.forEach(function(enemy) {
             enemy.update(dt);
          });
-        // player.update();
+         player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -117,7 +117,7 @@ var Engine = (function(global) {
             numRows = 6,
             numCols = 5,
             row, col;
-        
+
         // Before drawing, clear existing canvas
         ctx.clearRect(0,0,canvas.width,canvas.height)
 

@@ -2,7 +2,6 @@
 var Enemy = function(x, y, speed) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
-
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
   this.sprite = "images/enemy-bug.png";
@@ -50,6 +49,13 @@ class Player {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
+  update() {
+    if (this.y === -20) {
+      console.log("win");
+      window.setTimeout(reset, 1000);
+    }
+  }
+
   handleInput(input) {
     switch (input) {
       case "left":
@@ -58,7 +64,7 @@ class Player {
         }
         break;
       case "up":
-        if (this.y > this.jump) {
+        if (this.y > 0) {
           this.y -= this.jump;
         }
         break;
@@ -75,16 +81,18 @@ class Player {
     }
   }
 }
+function reset() {
+player.y = player.startY;
+};
 const player = new Player();
 const bug1 = new Enemy(-101, 0, 200);
 const bug2 = new Enemy(-101, 83, 75);
 const bug3 = new Enemy(-101 * 2.5, 166, 300);
+const bug4 = new Enemy(-101, 83, 125);
 const allEnemies = [];
-allEnemies.push(bug1, bug2, bug3);
+allEnemies.push(bug1, bug2, bug3, bug4);
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+const collision = function() {};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
