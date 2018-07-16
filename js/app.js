@@ -24,6 +24,16 @@ Enemy.prototype.update = function(dt) {
   } else {
     this.x = this.resetPos;
   }
+  // checks enemy and player positions for collision and resets if they hit.
+  if (
+    player.x < this.x + 65 &&
+    player.x + 40 > this.x &&
+    player.y < this.y + 30 &&
+    30 + player.y > this.y
+  ) {
+    player.x = player.startX;
+    player.y = player.startY;
+  }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -82,8 +92,9 @@ class Player {
   }
 }
 function reset() {
-player.y = player.startY;
-};
+  player.y = player.startY;
+  player.x = player.startX;
+}
 const player = new Player();
 const bug1 = new Enemy(-101, 0, 200);
 const bug2 = new Enemy(-101, 83, 75);
@@ -91,8 +102,6 @@ const bug3 = new Enemy(-101 * 2.5, 166, 300);
 const bug4 = new Enemy(-101, 83, 125);
 const allEnemies = [];
 allEnemies.push(bug1, bug2, bug3, bug4);
-
-const collision = function() {};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
