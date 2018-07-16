@@ -31,8 +31,7 @@ Enemy.prototype.update = function(dt) {
     player.y < this.y + 30 &&
     30 + player.y > this.y
   ) {
-    player.x = player.startX;
-    player.y = player.startY;
+    reset();
   }
 };
 
@@ -61,8 +60,12 @@ class Player {
 
   update() {
     if (this.y === -20) {
-      console.log("win");
+      document.getElementById('message').textContent = "You made it!";
       window.setTimeout(reset, 1000);
+
+    } else {
+      document.getElementById('message').textContent = "";
+
     }
   }
 
