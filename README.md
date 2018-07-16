@@ -1,4 +1,4 @@
-Front End Nanodegree Arcade Game Clone
+Udacity Front End Nanodegree Arcade Game Clone
 ===============================
 
 ## How to Play
