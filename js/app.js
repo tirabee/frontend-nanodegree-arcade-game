@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+let Enemy = function(x, y, speed) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
   // The image/sprite for our enemies, this uses
@@ -24,16 +24,20 @@ Enemy.prototype.update = function(dt) {
   } else {
     this.x = this.resetPos;
   }
-  // checks enemy and player positions for collision and resets if they hit.
-  if (
-    player.x < this.x + 65 &&
-    player.x + 40 > this.x &&
-    player.y < this.y + 30 &&
-    30 + player.y > this.y
-  ) {
-    reset();
-  }
 };
+
+function collision() {
+  for (var i = 0; i < allEnemies.length; i++) {
+    if (
+      player.x < allEnemies[i].x + 65 &&
+      player.x + 40 > allEnemies[i].x &&
+      player.y < allEnemies[i].y + 30 &&
+      30 + player.y > allEnemies[i].y
+    ) {
+      reset();
+    }
+  }
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -60,12 +64,10 @@ class Player {
 
   update() {
     if (this.y === -20) {
-      document.getElementById('message').textContent = "You made it!";
+      document.getElementById("message").textContent = "You made it!";
       window.setTimeout(reset, 1000);
-
     } else {
-      document.getElementById('message').textContent = "";
-
+      document.getElementById("message").textContent = "";
     }
   }
 
